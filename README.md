@@ -1,4 +1,4 @@
-# simpleapp
+# SIMPLE CALCULATOR APP
 
 A new Flutter project.
 
