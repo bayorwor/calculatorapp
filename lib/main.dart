@@ -221,11 +221,25 @@ class _HomeViewState extends State<HomeView> {
                         OperatorWidget(
                           operator: "/",
                           action: () {
-                            values = values + "-";
+                            values = values + "/";
                           },
                         )
                       ],
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: KeyPadWidget(
+                          customColor: _customColor,
+                          label: 'CLEAR',
+                          action: () {
+                            setState(() {
+                              values = '';
+                            });
+                          }),
+                    )
                   ],
                 )
               ],
@@ -281,8 +295,11 @@ class KeyPadWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
         style: TextButton.styleFrom(
-            backgroundColor:
-                label == "=" ? Colors.cyan : _customColor.keypadColor,
+            backgroundColor: label == "="
+                ? Colors.cyan
+                : label == "CLEAR"
+                    ? Colors.orangeAccent
+                    : _customColor.keypadColor,
             padding: const EdgeInsets.all(16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
